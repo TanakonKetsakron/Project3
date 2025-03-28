@@ -1,0 +1,135 @@
+/* รีเซ็ตค่าเริ่มต้น */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: "Kanit";
+    src: url("./Kanit/Kanit-Regular.ttf");
+}
+
+body { /* พื้นหลังขาวนวล */
+    font-family: "Kanit", sans-serif;
+    background: #FAF3E0; 
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    background: linear-gradient(135deg, #E8C372, #FFF8E1); /* ไล่สีทองอ่อน */
+    padding: 50px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(212, 175, 55, 0.3); /* เงาทอง */
+    border: 5px solid #D4AF37; /* ขอบทองเข้ม */
+    color: #8B6F47; /* ตัวหนังสือทองน้ำตาล */
+}
+
+.header {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #D4AF37; /* หัวข้อสีทอง */
+}
+
+.header-form {
+    width: 110px;
+}
+.flex {
+    display: flex;
+}
+.form-input {
+    margin-bottom: 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+input.form, textarea {
+    width: 97%;
+    padding: 10px;
+    border: 2px solid #D4AF37; /* เส้นขอบสีทอง */
+    border-radius: 6px;
+    font-size: 16px;
+    background: rgba(255, 248, 225, 0.85); /* ครีมทองโปร่งแสง */
+    transition: 0.3s;
+    max-width: 100%;
+    color: #5C4033; /* ข้อความสีน้ำตาลเข้ม */
+}
+
+input.form:focus, textarea:focus {
+    border-color: #FFD700; /* ทองสด */
+    outline: none;
+    box-shadow: 0px 0px 8px rgba(255, 215, 0, 0.6);
+    border: 5px solid #D4AF37;
+    width: 97%;
+}
+
+input.form:hover, textarea:hover {
+    background: #FFF3D6; /* ครีมทอง */
+    cursor: pointer;
+}
+
+.button {
+    padding: 12px;
+    background: #D4AF37; /* ปุ่มสีทอง */
+    border: 1px;
+    color: white;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 40%;
+    height: 50px;
+}
+
+.button {
+    font-family: "Kanit";
+}
+
+.center .button {
+    margin-top: 20px;
+}
+
+.button:hover {
+    background: #FFD700; /* สีทองสดเมื่อ hover */
+    color: black;
+}
+
+.message {
+    display: none;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.message.danger {
+    display: block;
+    background-color: red;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    .header {
+        font-size: 24px;
+    }
+    .button {
+        font-size: 16px;
+    }
+}

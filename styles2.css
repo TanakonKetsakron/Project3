@@ -1,0 +1,93 @@
+/* การตกแต่งตาราง */
+table {
+    width: 100%; /* ทำให้ตารางกว้างเต็มพื้นที่ */
+    border-collapse: collapse; /* รวมเส้นขอบให้เรียบร้อย */
+    margin: 20px 0; /* เพิ่มระยะห่างจากด้านบนและด้านล่าง */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงาใต้ตาราง */
+    border: 10px solid #EAD196; /* เพิ่มความหนาของเส้นขอบตาราง */
+    border-radius: 10px;
+}
+
+
+th, td {/*เส้นตาราง*/
+    padding: 12px; /* เว้นระยะห่างจากขอบเซลล์ */
+    text-align: left; /* จัดตำแหน่งข้อความให้ชิดซ้าย */
+     /* เส้นขอบของเซลล์ */
+    border: 5px solid #EAD196; /* เพิ่มความหนาของเส้นขอบใน th และ td */
+    box-shadow: 3px 3px 50px rgba(0, 0, 0, 0.3); /* เพิ่มเงาให้กับแต่ละเซลล์ */
+    
+}
+
+th { /*หัวตาราง*/
+    background-color: #BF3131 ;
+    color: white;
+    font-family: 'Arial', sans-serif; /* เปลี่ยนฟอนต์เป็น Arial */
+    font-size: 30px; /* กำหนดขนาดฟอนต์ */
+    font-weight: bold;
+}
+
+
+tr {
+    background-color: #FF6F6F; /* สีพื้นหลังของทุกแถว */
+}
+
+tr:hover {
+    background-color: 	#FF8225; /* สีพื้นหลังเมื่อ hover เม้าชึ้ ทุกแถว */
+}
+
+button { /*ปุ่ม*/
+    padding: 8px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {/*สีปุ่มหลัง เม้าชี้*/
+    background-color:rgb(255, 255, 255); /* สีพื้นหลังของปุ่มเมื่อ hover */
+    color: red; /* สีข้อความของปุ่มเมื่อ hoverทุกแถว */
+    transform: scale(1.5); /*ปุ่มใหญ่เมื่อชี้*/
+}
+
+a button {/*ปรับ สีปุ่ม edit*/
+    background-color: #4CAF50; /* สีพื้นหลังของปุ่ม Edit */
+    color: white; /* สีข้อความของปุ่ม Edit */
+    border: none; /* ลบขอบของปุ่ม */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้ปุ่ม Edit */
+}
+.delete { /*ปรับปุ่มdelete*/
+    background-color: #f44336; /* สีพื้นหลังของปุ่ม Delete */
+    color: white; /* สีข้อความของปุ่ม Delete */
+    border: none; /* ลบขอบของปุ่ม */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้ปุ่ม Delete */
+}
+body {/*สีพื้นหลัง ใหญ่*/
+    background-color: #7D0A0A; /* กำหนดสีพื้นหลัง */
+    color: white; /* เปลี่ยนสีข้อความ */
+}
+.back-button { /*ปุ่มลูกศร กลับ*/
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%; /* ทำให้เป็นวงกลม */
+    background-color: #EAD196; /* สีพื้นหลังของปุ่ม */
+    color: white; /* สีของลูกศร */
+    font-size: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease; /* ทำให้การเปลี่ยนแปลงสีและเงานุ่ม */
+    cursor: pointer;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.1); /* เงาของปุ่ม */
+}
+
+.back-button:hover { /*ปุ่มลูกศร*/
+    background-color: #BF3131; /* สีพื้นหลังของปุ่มเมื่อ hover */
+    box-shadow: 6px 6px 12px rgba(129, 255, 124, 0.3), 0 0 20px rgba(0, 0, 0, 0.2); /* เงาที่เข้มขึ้นเมื่อ hover */
+    transform: translateY(-4px); /* ทำให้ปุ่มลอยขึ้นเล็กน้อย */
+}
+
+
+
+
