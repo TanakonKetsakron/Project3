@@ -1,7 +1,26 @@
 const BASE_URL = 'http://localhost:8000'
 
 window.onload = async() => {
-    await loadData()
+    await loadData();
+    setupSearchFilter(); // เรียกใช้ฟังก์ชันการค้นหาหลังจากโหลดข้อมูลเสร็จ
+};
+
+const formatDateTime = (utcDateString) => {
+    if (!utcDateString) return '-';
+
+    let date = new Date(utcDateString);
+
+    date.setHours(date.getHours()+ 7);
+
+    // แปลงให้อยู่ในรูปแบบที่อ่านง่าย
+    return date.toLocaleString("th-TH", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
 };
 
 const loadData = async() => {
@@ -14,7 +33,7 @@ const loadData = async() => {
     const userDOM = document.getElementById('documents');
     
     let htmlData = `
-    <table border="1">
+    <table id="documents-table" border="1">
         <thead>
             <tr>
               <th>ID</th>
@@ -40,7 +59,7 @@ const loadData = async() => {
           <td>${documents.id}</td>
           <td>${documents.firstname}</td>
           <td>${documents.lastname}</td>
-          <td>${documents.date_time}</td>
+          <td>${formatDateTime(documents.date_time)}</td>
           <td>${documents.age}</td>
           <td>${documents.gender}</td>
           <td>${documents.document || '-'}</td>
@@ -73,6 +92,7 @@ const loadData = async() => {
             }
         });
     }
+    
 
     // Event สำหรับ อนุมัติ และ ไม่อนุมัติ
     const approveDOMs = document.getElementsByClassName('approve');
@@ -103,3 +123,29 @@ const updateStatus = async (id, status) => {
         console.log('error', error);
     }
 };
+
+// ฟังก์ชันค้นหาข้อมูลในตาราง
+const setupSearchFilter = () => {
+    const filterDOM = document.getElementById('search');
+    filterDOM.addEventListener('keyup', (event) => {
+        const filterValue = event.target.value.toLowerCase(); // แปลงเป็นตัวพิมพ์เล็กทั้งหมด
+        const rows = document.getElementById('documents-table').getElementsByTagName('tr'); 
+
+        // ลูปผ่านข้อมูลแต่ละแถวในตาราง
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName('td'); // ดึงข้อมูลแต่ละแถวในตาราง
+            let rowContainsFilterValue = false; // ตัวแปรเช็คว่าแถวนี้มีค่าที่ค้นหาหรือไม่
+
+            // ลูปผ่านข้อมูลแต่ละเซลล์ในแถว
+            for (let j = 0; j < cells.length; j++) {
+                if (cells[j].innerText.toLowerCase().includes(filterValue)) { // ตรวจสอบว่าแถวนี้มีค่าที่ค้นหาหรือไม่
+                    rowContainsFilterValue = true;
+                    break;
+                }
+            }
+            // ถ้าแถวไหนมีค่าตรงกับคำที่ค้นหาให้แสดง ถ้าไม่ใช่คำที่ค้นหาให้ซ่อน
+            rows[i].style.display = rowContainsFilterValue ? '' : 'none';
+        }
+    });
+};
+//หน้าตาราง

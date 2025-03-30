@@ -87,6 +87,18 @@ body {/*สีพื้นหลัง ใหญ่*/
     box-shadow: 6px 6px 12px rgba(129, 255, 124, 0.3), 0 0 20px rgba(0, 0, 0, 0.2); /* เงาที่เข้มขึ้นเมื่อ hover */
     transform: translateY(-4px); /* ทำให้ปุ่มลอยขึ้นเล็กน้อย */
 }
+.search-bar {
+    position: absolute; /* ใช้ absolute เพื่อให้ยึดกับ body */
+    top: 10px; /* ระยะห่างจากขอบบน */
+    right: 10px; /* ระยะห่างจากขอบขวา */
+    width: 250px; /* ขนาดของช่องค้นหา */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white; /* พื้นหลังขาวให้มองเห็น */
+    z-index: 1000; /* ป้องกันไม่ให้ถูกองค์ประกอบอื่นบัง */
+}
 
 
 

@@ -6,6 +6,21 @@ window.onload = async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
   console.log('id', id)
+
+  let date_timeDOM = document.querySelector('input[name=date_time]');
+  if (date_timeDOM) {
+    let now = new Date();
+    
+    // ปรับเวลาเป็นโซนประเทศไทย
+    let thailandTime = new Date(now.getTime() + (7 * 60 * 60 * 1000));
+
+    // แปลงรูปแบบให้เหมาะกับ input datetime-local (YYYY-MM-DDTHH:MM)
+    let formattedDateTime = thailandTime.toISOString().slice(0, 16);
+
+    date_timeDOM.value = formattedDateTime;
+  }
+
+  
   
   if (id) {
     mode = 'EDIT'
@@ -135,3 +150,4 @@ const submitData = async () => {
   }
 
 }
+//หน้าเว็บ
