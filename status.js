@@ -52,8 +52,16 @@ const loadData = async() => {
         <tbody>
     `;
 
-    for(let i = 0; i < response.data.length; i++) {
+    for (let i = 0; i < response.data.length; i++) {
         let documents = response.data[i];
+
+        // ตรวจสอบ status และกำหนด class สี
+        let statusClass = "status-pending"; // ค่าเริ่มต้นคือ "รออนุมัติ"
+        if (documents.status === "อนุมัติ") {
+            statusClass = "status-approved"; // สีเขียว
+        } else if (documents.status === "ไม่อนุมัติ") {
+            statusClass = "status-rejected"; // สีแดง
+        }
         htmlData += `
         <tr>
           <td>${documents.id}</td>
@@ -94,58 +102,48 @@ const loadData = async() => {
     }
     
 
-    // Event สำหรับ อนุมัติ และ ไม่อนุมัติ
-    const approveDOMs = document.getElementsByClassName('approve');
-    for(let i = 0; i < approveDOMs.length; i++) {
-        approveDOMs[i].addEventListener('click', async (event) => {
-            const id = event.target.dataset.id;
-            const status = event.target.dataset.status;
-            await updateStatus(id, status);
-        });
-    }
-
-    const rejectDOMs = document.getElementsByClassName('reject');
-    for(let i = 0; i < rejectDOMs.length; i++) {
-        rejectDOMs[i].addEventListener('click', async (event) => {
-            const id = event.target.dataset.id;
-            const status = event.target.dataset.status;
-            await updateStatus(id, status);
-        });
-    }
-};
-
-// ฟังก์ชันอัปเดตสถานะ อนุมัติ/ไม่อนุมัติ
-const updateStatus = async (id, status) => {
-    try {
-        await axios.put(`${BASE_URL}/documents/${id}`, { status }); // ส่งค่า status ไปอัปเดต
-        document.getElementById(`status-${id}`).innerText = status; // อัปเดต UI ทันที
-    } catch (error) {
-        console.log('error', error);
-    }
-};
-
-// ฟังก์ชันค้นหาข้อมูลในตาราง
-const setupSearchFilter = () => {
-    const filterDOM = document.getElementById('search');
-    filterDOM.addEventListener('keyup', (event) => {
-        const filterValue = event.target.value.toLowerCase(); // แปลงเป็นตัวพิมพ์เล็กทั้งหมด
-        const rows = document.getElementById('documents-table').getElementsByTagName('tr'); 
-
-        // ลูปผ่านข้อมูลแต่ละแถวในตาราง
-        for (let i = 1; i < rows.length; i++) {
-            const cells = rows[i].getElementsByTagName('td'); // ดึงข้อมูลแต่ละแถวในตาราง
-            let rowContainsFilterValue = false; // ตัวแปรเช็คว่าแถวนี้มีค่าที่ค้นหาหรือไม่
-
-            // ลูปผ่านข้อมูลแต่ละเซลล์ในแถว
-            for (let j = 0; j < cells.length; j++) {
-                if (cells[j].innerText.toLowerCase().includes(filterValue)) { // ตรวจสอบว่าแถวนี้มีค่าที่ค้นหาหรือไม่
-                    rowContainsFilterValue = true;
-                    break;
-                }
-            }
-            // ถ้าแถวไหนมีค่าตรงกับคำที่ค้นหาให้แสดง ถ้าไม่ใช่คำที่ค้นหาให้ซ่อน
-            rows[i].style.display = rowContainsFilterValue ? '' : 'none';
-        }
-    });
-};
-//หน้าตาราง
+     // Event สำหรับ อนุมัติ และ ไม่อนุมัติ
+     const approveDOMs = document.getElementsByClassName('approve');
+     for(let i = 0; i < approveDOMs.length; i++) {
+         approveDOMs[i].addEventListener('click', async (event) => {
+             const id = event.target.dataset.id;
+             const status = event.target.dataset.status;
+             await updateStatus(id, status);
+         });
+     }
+ 
+     const rejectDOMs = document.getElementsByClassName('reject');
+     for(let i = 0; i < rejectDOMs.length; i++) {
+         rejectDOMs[i].addEventListener('click', async (event) => {
+             const id = event.target.dataset.id;
+             const status = event.target.dataset.status;
+             await updateStatus(id, status);
+         });
+     }
+ };
+ 
+ // ฟังก์ชันอัปเดตสถานะ อนุมัติ/ไม่อนุมัติ
+ const updateStatus = async (id, status) => {
+     try {
+         await axios.put(`${BASE_URL}/documents/${id}`, { status: status });
+         loadData(); // โหลดข้อมูลใหม่หลังจากอัปเดต
+     } catch (error) {
+         console.error('Error updating status', error);
+     }
+ };
+ 
+ // เพิ่ม Event ให้ปุ่ม "อนุมัติ"
+ document.addEventListener('click', function(event) {
+     if (event.target.classList.contains('approve')) {
+         const id = event.target.dataset.id;
+         updateStatus(id, 'อนุมัติ');
+     }
+ });
+ 
+ // เพิ่ม Event ให้ปุ่ม "ไม่อนุมัติ"
+ document.addEventListener('click', function(event) {
+     if (event.target.classList.contains('reject')) {
+         const id = event.target.dataset.id;
+         updateStatus(id, 'ไม่อนุมัติ');
+     }
+ });

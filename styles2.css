@@ -99,7 +99,64 @@ body {/*สีพื้นหลัง ใหญ่*/
     background-color: white; /* พื้นหลังขาวให้มองเห็น */
     z-index: 1000; /* ป้องกันไม่ให้ถูกองค์ประกอบอื่นบัง */
 }
+/* สีเหลือง: รออนุมัติ */
+.status-pending {
+    background-color: yellow;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
 
+/* สีเขียว: อนุมัติ */
+.status-approved {
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
 
+/* สีแดง: ไม่อนุมัติ */
+.status-rejected {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+td:nth-child(4) { /* กำหนดให้คอลัมน์ date_time */
+    font-family: 'Arial', sans-serif; /* เปลี่ยนฟอนต์ */
+    font-size: 14px; /* ปรับขนาดฟอนต์ */
+    font-weight: bold; /* ทำให้ตัวหนา */
+    color: white; /* สีตัวอักษร */
+}
+.approve {
+    font-weight: bold;
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
+.approve:hover {
+    background-color: green;
+    color: white;
+}
 
+.reject {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.reject:hover {
+    background-color: darkred;
+    color: white;
+}

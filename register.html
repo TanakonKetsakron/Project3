@@ -5,13 +5,24 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Document</title>
-     <!-- ส่วนนี้คือ CSS -->
-     <!-- ใช้สำหรับแต่ง (id class) -->
      <link rel="stylesheet" href="styles.css">
-
+     <!-- เพิ่ม Google Material Icons -->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
+
 <body>
-     <!-- form -->
+
+     <!-- Navbar -->
+     <nav class="navbar">
+          <div class="logo">
+              <span class="material-icons">article</span> Document for Status
+          </div>
+          <ul id="myMenu">
+               <li><a href="status.html">Status</a></li>
+          </ul>
+     </nav>
+
+     <!-- Form -->
      <div class="container">
           <div class="header">
                Document
@@ -48,9 +59,10 @@
           </div>
 
           <div class="form-input">
-               ประเภทเอกสาร
-                <div>
-                      <input name="document" type="radio" value="สำเนาบัตรประชาชน"> สำเนาบัตรประชาชน
+               <label>ประเภทเอกสาร</label>
+               <div>
+                    <input name="document" type="radio" value="สำเนาบัตรประชาชน"> สำเนาบัตรประชาชน
+               </div>
                <div>
                     <input name="document" type="radio" value="การเงิน"> การเงิน
                </div>
@@ -58,27 +70,25 @@
                     <input name="document" type="radio" value="ใบลา"> ใบลา
                </div>
                <div>
-                <input name="document" type="radio" value="อื่นๆ"> อื่นๆ
-           </div>
-               
+                    <input name="document" type="radio" value="อื่นๆ"> อื่นๆ
+               </div>
           </div>
+
           <div class="form-input">
-                หมายเหตุ
+               <label>หมายเหตุ</label>
                <textarea name="note"></textarea>
           </div>
           
-          <div id=message class="message"></div>
+          <div id="message" class="message"></div>
           <div class="center">
-               <button onclick="submitData()" class="button">ส่งข้อมูล</button>
-          </div>
-          <div class="center">
-               <a href="users.html">
-                    <button class="button">ไปยังหน้าผู้ใช้</button>
-               </a>
-
+               <button onclick="submitData()" class="button">
+                    <span class="material-icons">send</span> Send Document
+               </button>
           </div>
      </div>
+
      <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-     <script src="index.js"></script>
+     <script src="register.js"></script>
+
 </body>
 </html>

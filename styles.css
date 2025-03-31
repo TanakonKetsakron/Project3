@@ -133,3 +133,49 @@ input.form:hover, textarea:hover {
         font-size: 16px;
     }
 }
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    z-index: 1000;
+    display: flex;          /* ใช้ Flexbox */
+    justify-content: space-between; /* แยกซ้าย-ขวา */
+    align-items: center;    /* จัดให้อยู่กึ่งกลางแนวตั้ง */
+}
+
+.logo {
+    display: flex;
+    align-items: center; /* จัดให้ไอคอนและข้อความอยู่ตรงกลางแนวตั้ง */
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.material-icons {
+    margin-right: 8px; /* เพิ่มระยะห่างระหว่างไอคอนกับข้อความ */
+}
+
+#myMenu {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* เพิ่มระยะห่างระหว่างเมนู */
+}
+
+#myMenu li {
+    display: inline;
+}
+
+#myMenu a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 8px 12px;
+    transition: 0.3s;
+}
+
+#myMenu a:hover {
+    color:rgb(255, 0, 0); /* เปลี่ยนสีเมื่อโฮเวอร์ */
+}
