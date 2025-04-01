@@ -72,7 +72,8 @@ const loadData = async() => {
           <td>${documents.gender}</td>
           <td>${documents.document || '-'}</td>
           <td>${documents.note || '-'}</td>
-          <td id="status-${documents.id}">${documents.status || 'รออนุมัติ'}</td> <!-- แสดงสถานะ -->
+          <td id="status-${documents.id}" class="status ${statusClass}">${documents.status || 'รออนุมัติ'}</td>
+
           <td>
               <a href='register.html?id=${documents.id}'><button>Edit</button></a> 
               <button class='delete' data-id='${documents.id}'>Delete</button> 
@@ -122,31 +123,31 @@ const loadData = async() => {
      }
  };
  
- // ฟังก์ชันอัปเดตสถานะ อนุมัติ/ไม่อนุมัติ
+ // ฟังก์ชันอัปเดตสถานะ อนุมัติ/ไม่อนุมัติ  สีของststus
  const updateStatus = async (id, status) => {
-     try {
-         await axios.put(`${BASE_URL}/documents/${id}`, { status: status });
-         loadData(); // โหลดข้อมูลใหม่หลังจากอัปเดต
-     } catch (error) {
-         console.error('Error updating status', error);
-     }
- };
- 
- // เพิ่ม Event ให้ปุ่ม "อนุมัติ"
- document.addEventListener('click', function(event) {
-     if (event.target.classList.contains('approve')) {
-         const id = event.target.dataset.id;
-         updateStatus(id, 'อนุมัติ');
-     }
- });
- 
- // เพิ่ม Event ให้ปุ่ม "ไม่อนุมัติ"
- document.addEventListener('click', function(event) {
-     if (event.target.classList.contains('reject')) {
-         const id = event.target.dataset.id;
-         updateStatus(id, 'ไม่อนุมัติ');
-     }
- });
+    try {
+        await axios.put(`${BASE_URL}/documents/${id}`, { status: status });
+
+        // อัปเดตข้อความของสถานะ
+        const statusCell = document.getElementById(`status-${id}`);
+        statusCell.textContent = status;
+
+        // ลบ class เดิมก่อน
+        statusCell.classList.remove("status-approved", "status-rejected", "status-pending");
+
+        // เพิ่ม class ใหม่ตามค่า status
+        if (status === "อนุมัติ") {
+            statusCell.classList.add("status-approved");
+        } else if (status === "ไม่อนุมัติ") {
+            statusCell.classList.add("status-rejected");
+        } else {
+            statusCell.classList.add("status-pending");
+        }
+    } catch (error) {
+        console.error('Error updating status', error);
+    }
+};
+
  const setupSearchFilter = () => {
     const filterDOM = document.getElementById('search');
     filterDOM.addEventListener('keyup', (event) => {
