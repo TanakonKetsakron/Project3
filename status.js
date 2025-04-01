@@ -74,7 +74,7 @@ const loadData = async() => {
           <td>${documents.note || '-'}</td>
           <td id="status-${documents.id}">${documents.status || 'รออนุมัติ'}</td> <!-- แสดงสถานะ -->
           <td>
-              <a href='index.html?id=${documents.id}'><button>Edit</button></a> 
+              <a href='register.html?id=${documents.id}'><button>Edit</button></a> 
               <button class='delete' data-id='${documents.id}'>Delete</button> 
           </td>
           <td>
