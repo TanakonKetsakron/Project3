@@ -126,4 +126,14 @@ html, body {
     overflow-x: hidden; /* ป้องกันการเลื่อนแนวนอน */
     
 }
+.form-input {
+    display: flex;
+    justify-content: center; /* จัดให้อยู่กึ่งกลางแนวนอน */
+    align-items: center; /* จัดให้อยู่กึ่งกลางแนวตั้ง (หากต้องการ) */
+    text-align: center; /* จัดข้อความให้อยู่กึ่งกลาง */
+    margin-top: 1px; /* เพิ่มระยะห่างจากด้านบน */
+    font-size: 18px; /* ปรับขนาดตัวอักษร */
+    font-weight: bold; /* ทำให้ตัวอักษรหนาขึ้น */
+    
+}
 

@@ -44,8 +44,9 @@ tr:hover {
     background-color: 	#FF8225; /* สีพื้นหลังเมื่อ hover เม้าชึ้ ทุกแถว */
 }
 
-button { /*ปุ่ม*/
-    padding: 8px 16px;
+button { /*ปุ่มedit/Delete ขนาดปุ่ม*/
+    
+    padding: 40px 16px;
     margin: 5px;
     border: none;
     border-radius: 5px;
@@ -54,49 +55,35 @@ button { /*ปุ่ม*/
 }
 
 button:hover {/*สีปุ่มหลัง เม้าชี้*/
-    background-color:rgb(255, 255, 255); /* สีพื้นหลังของปุ่มเมื่อ hover */
+    background-color:rgb(255, 238, 0); /* สีพื้นหลังของปุ่มเมื่อ hover */
     color: red; /* สีข้อความของปุ่มเมื่อ hoverทุกแถว */
     transform: scale(1.5); /*ปุ่มใหญ่เมื่อชี้*/
 }
 
 a button {/*ปรับ สีปุ่ม edit*/
+    position: relative;/* ป้องกันการซ้อนทับกับ Navbar */
     background-color: #4CAF50; /* สีพื้นหลังของปุ่ม Edit */
     color: white; /* สีข้อความของปุ่ม Edit */
     border: none; /* ลบขอบของปุ่ม */
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้ปุ่ม Edit */
+    z-index: 999; /* ทำให้ปุ่มอยู่เหนือองค์ประกอบอื่นๆ */
 }
 .delete { /*ปรับปุ่มdelete*/
+    position: relative;/* ป้องกันการซ้อนทับกับ Navbar */
     background-color: #f44336; /* สีพื้นหลังของปุ่ม Delete */
     color: white; /* สีข้อความของปุ่ม Delete */
     border: none; /* ลบขอบของปุ่ม */
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้ปุ่ม Delete */
+    z-index: 999; /* ให้ต่ำกว่า Navbar */
 }
 body {/*สีพื้นหลัง ใหญ่*/
     background-color: #7D0A0A; /* กำหนดสีพื้นหลัง */
     color: white; /* เปลี่ยนสีข้อความ */
     font-family: "Kanit", sans-serif;
 }
-.back-button { /*ปุ่มลูกศร กลับ*/
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 100%; /* ทำให้เป็นวงกลม */
-    background-color: #EAD196; /* สีพื้นหลังของปุ่ม */
-    color: white; /* สีของลูกศร */
-    font-size: 30px;
-    text-decoration: none;
-    transition: all 0.3s ease; /* ทำให้การเปลี่ยนแปลงสีและเงานุ่ม */
-    cursor: pointer;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 0, 0, 0.1); /* เงาของปุ่ม */
-}
 
-.back-button:hover { /*ปุ่มลูกศร*/
-    background-color: #BF3131; /* สีพื้นหลังของปุ่มเมื่อ hover */
-    box-shadow: 6px 6px 12px rgba(129, 255, 124, 0.3), 0 0 20px rgba(0, 0, 0, 0.2); /* เงาที่เข้มขึ้นเมื่อ hover */
-    transform: translateY(-4px); /* ทำให้ปุ่มลอยขึ้นเล็กน้อย */
-}
+
+
 .search-bar {
     position: absolute; /* ใช้ absolute เพื่อให้ยึดกับ body */
     top: 10px; /* ระยะห่างจากขอบบน */
@@ -112,30 +99,34 @@ body {/*สีพื้นหลัง ใหญ่*/
 
 td:nth-child(4) { /* กำหนดให้คอลัมน์ date_time */
     font-family: 'Arial', sans-serif; /* เปลี่ยนฟอนต์ */
-    font-size: 14px; /* ปรับขนาดฟอนต์ */
+    font-size: 20px; /* ปรับขนาดฟอนต์ */
     font-weight: bold; /* ทำให้ตัวหนา */
     color: white; /* สีตัวอักษร */
 }
 .approve {
+    
+    z-index: 999; /* ให้ต่ำกว่า Navbar */
     font-weight: bold;
     background-color: green;
-    color: white;
+    color: white; /* สีข้อความ */
     border: none;
-    padding: 8px 12px;
+    padding: 40px 16px;
     cursor: pointer;
     border-radius: 5px;
 }
 
 .approve:hover {
-    background-color: green;
-    color: white;
+    background-color:rgb(238, 255, 0); /* สีพื้นหลังของปุ่มเมื่อ hover */
+    color: red;
 }
 
 .reject {
+    z-index: 999; /* ให้ต่ำกว่า Navbar */
     background-color: red;
     color: white;
+    background-color: #f44336; /* สีพื้นหลังของปุ่ม ไม่อนุมัติ */
     border: none;
-    padding: 8px 12px;
+    padding: 40px 16px;
     cursor: pointer;
     border-radius: 5px;
     font-weight: bold;
@@ -143,7 +134,8 @@ td:nth-child(4) { /* กำหนดให้คอลัมน์ date_time */
 
 .reject:hover {
     background-color: darkred;
-    color: white;
+    color: red;
+    background-color:rgb(238, 255, 0); /* สีพื้นหลังของปุ่มเมื่อ hover */
 }
 .status {
     padding: 5px 10px;
@@ -290,10 +282,6 @@ html, body {
     width: 100%;
     overflow-x: hidden; /* ป้องกันการเลื่อนแนวนอน */
 }
-
-/* ป้องกัน Navbar บังเนื้อหา */
-/* ป้องกัน Navbar บังเนื้อหา */
-/* ป้องกัน Navbar บังเนื้อหา */
 /* ป้องกัน Navbar บังเนื้อหา */
 body {
     padding-top: 70px; /* ดันเนื้อหาทั้งหมดลงมาต่ำกว่าความสูงของ Navbar */
@@ -318,15 +306,18 @@ body {
 
 /* ปรับช่องค้นหาให้ไม่ทับกับ Navbar */
 .search-container {
+    position: relative; /* ป้องกันการซ้อนทับกับ Navbar */
+    width: 100%;
     text-align: center;
-    margin-top: 80px; /* ขยับช่องค้นหาลงมาให้ห่างจาก Navbar */
+    margin-top: 20px; /* ขยับช่องค้นหาลงมาให้ห่างจาก Navbar */
     padding: 10px;
+    z-index: 999; /* ให้ต่ำกว่า Navbar */
 }
 
 /* ปรับช่องค้นหาให้แสดงสวยงาม */
 .search-bar {
     position: relative; /* เปลี่ยนจาก absolute เพื่อให้อยู่ใน flow ของหน้าเว็บ */
-    width: 300px; /* ปรับขนาดให้พอดี */
+    width: 500px; /* ปรับขนาดให้พอดี */
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
