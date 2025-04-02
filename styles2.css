@@ -74,6 +74,7 @@ a button {/*ปรับ สีปุ่ม edit*/
 body {/*สีพื้นหลัง ใหญ่*/
     background-color: #7D0A0A; /* กำหนดสีพื้นหลัง */
     color: white; /* เปลี่ยนสีข้อความ */
+    font-family: "Kanit", sans-serif;
 }
 .back-button { /*ปุ่มลูกศร กลับ*/
     display: inline-flex;
