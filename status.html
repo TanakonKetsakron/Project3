@@ -1,20 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>เอกสาร</title>
+    <!-- เชื่อมโยงกับไฟล์ CSS -->
     <link rel="stylesheet" href="styles2.css">
-    <div class="search-container">
-        <input type="text" id="search" class="search-bar" placeholder="ค้นหา...">
-    </div>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
-       <a href="register.html" class="back-button"> ◁ </a>
 
-       <div id="documents"></div>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="material-icons">article</i>
+            <span>Document for Status</span>
+        </div>
+        <ul id="myMenu">
+             <li><a href="Home.html">Home</a></li>
+             <li><a href="document_status.html">Approved</a></li>
+             <li><a href="status.html">Status</a></li>
+        </ul>
+    </nav>
 
+    <!-- ช่องค้นหา (ต้องอยู่ใต้ Navbar) -->
+    <div class="search-container">
+        <input type="text" id="search" class="search-bar" placeholder="ค้นหา...">
+    </div>
+
+    <!-- แสดงเอกสาร -->
+    <div id="documents"></div>
+    <!-- สคริปต์ -->
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <script src="status.js"></script>
 

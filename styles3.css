@@ -1,0 +1,120 @@
+/* ================== ปรับแต่ง Navbar ================== */
+.navbar {
+    position: fixed; /* ทำให้ Navbar อยู่ด้านบนตลอด */
+    top: 0;
+    left: 0;
+    width: 100vw; /* กำหนดความกว้างเต็มจอ */
+    max-width: 100%; /* ป้องกันการเกินขอบ */
+    overflow: hidden; /* ป้องกันการล้น */
+    background-color: #ffffff; /* พื้นหลังสีขาว */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* เงาเพิ่มมิติ */
+    padding: 15px 20px; /* ระยะห่างด้านใน */
+    z-index: 1000; /* ให้อยู่ด้านบนสุด */
+    display: flex; /* ใช้ Flexbox */
+    justify-content: space-between; /* จัดวางซ้าย-ขวา */
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    box-sizing: border-box; /* ป้องกันการขยายเกินขนาด */
+}
+
+/* ================== ปรับแต่ง Logo ================== */
+.logo {
+    display: flex;
+    align-items: center; /* จัดให้ไอคอนและข้อความอยู่ตรงกลางแนวตั้ง */
+    font-size: 30px; /* ขนาดตัวอักษร */
+    font-weight: bold; /* ทำให้ตัวอักษรหนา */
+}
+
+/* ไอคอนใน Logo */
+.material-icons {
+    margin-right: 8px; /* เพิ่มระยะห่างระหว่างไอคอนกับข้อความ */
+}
+
+/* ================== ปรับแต่งเมนูหลัก ================== */
+#myMenu {
+    list-style: none; /* เอาจุดหน้ารายการออก */
+    display: flex; /* ใช้ Flexbox */
+    flex-wrap: wrap; /* ให้เมนูพับลงเมื่อพื้นที่ไม่พอ */
+    gap: 15px; /* กำหนดระยะห่างระหว่างเมนู */
+    max-width: 100%; /* ป้องกันการขยายเกินขนาด */
+    padding: 0;
+    margin: 0;
+}
+
+/* ปรับแต่งปุ่มเมนู */
+#myMenu li {
+    display: inline;
+}
+
+#myMenu a {
+    text-decoration: none; /* เอาเส้นใต้ลิงก์ออก */
+    color: black; /* สีตัวอักษร */
+    font-weight: bold; /* ตัวหนา */
+    padding: 12px 20px; /* ขนาดปุ่ม */
+    display: inline-block; /* ให้เป็นบล็อกที่กำหนดขนาดได้ */
+    text-align: center; /* จัดข้อความให้อยู่กึ่งกลาง */
+    border-radius: 8px; /* ทำให้มุมปุ่มโค้งมน */
+    transition: 0.3s; /* เพิ่มเอฟเฟกต์ตอนเปลี่ยนสี */
+}
+
+/* เอฟเฟกต์ Hover เมื่อเมาส์ชี้ที่ปุ่ม */
+#myMenu a:hover {
+    background-color: rgb(255, 0, 0); /* เปลี่ยนสีพื้นหลัง */
+    color: white; /* เปลี่ยนสีตัวอักษรเป็นขาว */
+}
+
+/* ================== ปรับแต่งปุ่ม Register ให้เด่นขึ้น ================== */
+#myMenu a.register-btn {
+    background-color: rgb(0, 128, 255); /* สีน้ำเงิน */
+    color: white; /* ตัวอักษรสีขาว */
+    font-weight: bold;
+    padding: 12px 22px; /* ขนาดปุ่ม */
+    border-radius: 8px; /* ทำให้ขอบโค้งมน */
+    transition: 0.3s;
+}
+button {
+    display: inline-block !important; /* บังคับให้ปุ่มแสดง */
+    visibility: visible !important; /* บังคับให้มองเห็น */
+    opacity: 1 !important; /* ทำให้ปุ่มไม่โปร่งใส */
+    position: relative !important; /* ป้องกันการซ้อนทับ */
+    z-index: 1000; /* ทำให้ปุ่มอยู่ข้างหน้า */
+    font-weight: bold;
+    
+}
+
+
+
+/* ================== ปรับแต่งปุ่มเมนูสำหรับมือถือ ================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* จัด Navbar เป็นแนวตั้ง */
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .menu-toggle {
+        display: block; /* แสดงปุ่มเมนู */
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    #myMenu {
+        flex-direction: column;
+        align-items: center;
+        display: none; /* ซ่อนเมนูเริ่มต้น */
+        width: 100%;
+    }
+
+    #myMenu.show {
+        display: flex; /* แสดงเมนูเมื่อกดปุ่ม */
+    }
+}
+
+/* ================== ปิดการเลื่อนแนวนอนของหน้าเว็บ ================== */
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* ป้องกันการเลื่อนแนวนอน */
+}

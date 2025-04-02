@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approved_documents</title>
+    <link rel="stylesheet" href="styles3.css">
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; }
+        th { background-color: #4CAF50; color: white; }
+        .status-approved { background-color: #c8e6c9; color: #2e7d32; font-weight: bold; }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+     <!-- Navbar -->
+     <nav class="navbar">
+
+        <div class="logo">
+            <span class="material-icons">article</span> Document for Status
+        </div>
+        <ul id="myMenu">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="status.html">Status</a></li>
+             
+        </ul>
+   </nav>
+    <h2>Approved_documents</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ชื่อ</th>
+                <th>นามสกุล</th>
+                <th>ประเภทเอกสาร</th>
+                <th>หมายเหตุ</th>
+                <th>สถานะ</th>
+            </tr>
+        </thead>
+        <tbody id="approved-documents"></tbody>
+    </table>
+
+    <script>
+        const BASE_URL = 'http://localhost:8000';
+        
+        window.onload = async () => {
+            try {
+                const response = await fetch(`${BASE_URL}/documents`);
+                const data = await response.json();
+                
+                const approvedDocs = data.filter(doc => doc.status === "อนุมัติ");
+                const tableBody = document.getElementById('approved-documents');
+                
+                if (approvedDocs.length === 0) {
+                    tableBody.innerHTML = '<tr><td colspan="6">ไม่มีเอกสารที่อนุมัติ</td></tr>';
+                } else {
+                    approvedDocs.forEach(doc => {
+                        const row = `<tr>
+                            <td>${doc.id}</td>
+                            <td>${doc.firstname}</td>
+                            <td>${doc.lastname}</td>
+                            <td>${doc.document || '-'}</td>
+                            <td>${doc.note || '-'}</td>
+                            <td class="status-approved">${doc.status}</td>
+                        </tr>`;
+                        tableBody.innerHTML += row;
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching approved documents:', error);
+            }
+        };
+    </script>
+     <div class="form-input">
+         <label>!!!สามารถไปรับเอกสารได้ที่ ห้องธุรการ!!!</label>
+     </div>
+</body>
+</html>
